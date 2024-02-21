@@ -16,31 +16,24 @@ import org.bukkit.event.vehicle.VehicleMoveEvent;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.RecipeChoice;
-import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.util.Vector;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
-
-import de.sivery.speedyboats.Metrics;
-import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.util.Vector;
 
 import java.util.Collections;
 
 public class SpeedyBoats extends JavaPlugin implements Listener {
 
     FileConfiguration config = getConfig();
-    public void onEnable() {
-        // -----------------------
-        int pluginId = 19754; // <-- Replace with the id of your plugin!
-        Metrics metrics = new Metrics(this, pluginId);
-        // -----------------------
 
-        getServer().getConsoleSender().sendMessage(ChatColor.BLUE+"[SpeedyBoats] Loading plugin...");
-        getServer().getConsoleSender().sendMessage(ChatColor.BLUE+"[SpeedyBoats]     Registering event listener...");
+    public void onEnable() {
+        getServer().getConsoleSender().sendMessage(ChatColor.BLUE + "[SpeedyBoats] Loading plugin...");
+        getServer().getConsoleSender().sendMessage(ChatColor.BLUE + "[SpeedyBoats]     Registering event listener...");
 
         this.getServer().getPluginManager().registerEvents(this, this);
 
-        getServer().getConsoleSender().sendMessage(ChatColor.BLUE+"[SpeedyBoats]     Initializing crafting recipes...");
+        getServer().getConsoleSender().sendMessage(ChatColor.BLUE + "[SpeedyBoats]     Initializing crafting recipes...");
 
         // Add Level 1 recipes
         ItemStack item = new ItemStack(Material.SUGAR);
@@ -52,7 +45,7 @@ public class SpeedyBoats extends JavaPlugin implements Listener {
 
         meta.setDisplayName(ChatColor.RED + "Engine Level 1");
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        meta.setLore(Collections.singletonList(ChatColor.RESET.toString() + ChatColor.GRAY +"Hold the engine in your main hand so the engine accelerates you and your boat."));
+        meta.setLore(Collections.singletonList(ChatColor.RESET.toString() + ChatColor.GRAY + "Hold the engine in your main hand so the engine accelerates you and your boat."));
 
         item.setItemMeta(meta);
 
@@ -71,7 +64,7 @@ public class SpeedyBoats extends JavaPlugin implements Listener {
         recipe.setIngredient('S', Material.SUGAR);
 
         Bukkit.addRecipe(recipe);
-        getServer().getConsoleSender().sendMessage(ChatColor.BLUE+"[SpeedyBoats]     Loaded Engine level 1 recipe \u2714");
+        getServer().getConsoleSender().sendMessage(ChatColor.BLUE + "[SpeedyBoats]     Loaded Engine level 1 recipe \u2714");
 
         ItemStack lvl1Item = item;
 
@@ -85,7 +78,7 @@ public class SpeedyBoats extends JavaPlugin implements Listener {
 
         meta.setDisplayName(ChatColor.RED + "Engine Level 2");
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        meta.setLore(Collections.singletonList(ChatColor.RESET.toString() + ChatColor.GRAY +"Hold the engine in your main hand so the engine accelerates you and your boat."));
+        meta.setLore(Collections.singletonList(ChatColor.RESET.toString() + ChatColor.GRAY + "Hold the engine in your main hand so the engine accelerates you and your boat."));
 
         item.setItemMeta(meta);
 
@@ -104,7 +97,7 @@ public class SpeedyBoats extends JavaPlugin implements Listener {
         recipe.setIngredient('E', new RecipeChoice.ExactChoice(lvl1Item));
 
         Bukkit.addRecipe(recipe);
-        getServer().getConsoleSender().sendMessage(ChatColor.BLUE+"[SpeedyBoats]     Loaded Engine level 2 recipe \u2714");
+        getServer().getConsoleSender().sendMessage(ChatColor.BLUE + "[SpeedyBoats]     Loaded Engine level 2 recipe \u2714");
 
         ItemStack lvl2Item = item;
 
@@ -118,7 +111,7 @@ public class SpeedyBoats extends JavaPlugin implements Listener {
 
         meta.setDisplayName(ChatColor.RED + "Engine Level 3");
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        meta.setLore(Collections.singletonList(ChatColor.RESET.toString() + ChatColor.GRAY +"Hold the engine in your main hand so the engine accelerates you and your boat."));
+        meta.setLore(Collections.singletonList(ChatColor.RESET.toString() + ChatColor.GRAY + "Hold the engine in your main hand so the engine accelerates you and your boat."));
 
         item.setItemMeta(meta);
 
@@ -137,13 +130,13 @@ public class SpeedyBoats extends JavaPlugin implements Listener {
         recipe.setIngredient('E', new RecipeChoice.ExactChoice(lvl2Item));
 
         Bukkit.addRecipe(recipe);
-        getServer().getConsoleSender().sendMessage(ChatColor.BLUE+"[SpeedyBoats]     Loaded Engine level 3 recipe \u2714");
+        getServer().getConsoleSender().sendMessage(ChatColor.BLUE + "[SpeedyBoats]     Loaded Engine level 3 recipe \u2714");
 
-        getServer().getConsoleSender().sendMessage(ChatColor.BLUE+"[SpeedyBoats]     Loading configuration...");
+        getServer().getConsoleSender().sendMessage(ChatColor.BLUE + "[SpeedyBoats]     Loading configuration...");
         config.options().copyDefaults(true);
         saveConfig();
 
-        getServer().getConsoleSender().sendMessage(ChatColor.BLUE+"[SpeedyBoats] Successfully loaded! Have fun!");
+        getServer().getConsoleSender().sendMessage(ChatColor.BLUE + "[SpeedyBoats] Successfully loaded! Have fun!");
 
     }
 
@@ -167,13 +160,13 @@ public class SpeedyBoats extends JavaPlugin implements Listener {
             Material itemType = player.getInventory().getItemInMainHand().getType();
             String itemName = player.getInventory().getItemInMainHand().getItemMeta().getDisplayName();
 
-            if (itemType == Material.SUGAR && itemName.equals(ChatColor.RED + "Engine Level 1")){
+            if (itemType == Material.SUGAR && itemName.equals(ChatColor.RED + "Engine Level 1")) {
                 boat.setVelocity(new Vector(boat.getLocation().getDirection().multiply(config.getDouble("multiplierLVL1")).getX(), 0.0, boat.getLocation().getDirection().multiply(config.getDouble("multiplierLVL1")).getZ()));
             }
-            if (itemType == Material.REDSTONE && itemName.equals(ChatColor.RED + "Engine Level 2")){
+            if (itemType == Material.REDSTONE && itemName.equals(ChatColor.RED + "Engine Level 2")) {
                 boat.setVelocity(new Vector(boat.getLocation().getDirection().multiply(config.getDouble("multiplierLVL2")).getX(), 0.0, boat.getLocation().getDirection().multiply(config.getDouble("multiplierLVL2")).getZ()));
             }
-            if (itemType == Material.POPPED_CHORUS_FRUIT && itemName.equals(ChatColor.RED + "Engine Level 3")){
+            if (itemType == Material.POPPED_CHORUS_FRUIT && itemName.equals(ChatColor.RED + "Engine Level 3")) {
                 boat.setVelocity(new Vector(boat.getLocation().getDirection().multiply(config.getDouble("multiplierLVL3")).getX(), 0.0, boat.getLocation().getDirection().multiply(config.getDouble("multiplierLVL3")).getZ()));
             }
         }

@@ -1,0 +1,8 @@
+name: SpeedyBoats
+description: Give your boats a little extra SPEEED
+version: '${version}'
+main: de.sivery.speedyboats.SpeedyBoats
+api-version: '1.20'
+load: STARTUP
+authors: [Sivery, XHawk87]
+website: github.com/siveryt/speedyboats
