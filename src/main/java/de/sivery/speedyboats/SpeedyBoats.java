@@ -30,7 +30,7 @@ public class SpeedyBoats extends JavaPlugin implements Listener {
         // Add Level 1 recipes
         ItemStack item = new ItemStack(Material.SUGAR);
 
-        item.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 1);
+        item.addUnsafeEnchantment(Enchantment.PROTECTION, 1);
 
         ItemMeta meta = item.getItemMeta();
         assert meta != null;
@@ -63,7 +63,7 @@ public class SpeedyBoats extends JavaPlugin implements Listener {
         // Add Level 2 recipes
         item = new ItemStack(Material.REDSTONE);
 
-        item.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 1);
+        item.addUnsafeEnchantment(Enchantment.PROTECTION, 1);
 
         meta = item.getItemMeta();
         assert meta != null;
@@ -96,7 +96,7 @@ public class SpeedyBoats extends JavaPlugin implements Listener {
         // Add Level 3 recipes
         item = new ItemStack(Material.POPPED_CHORUS_FRUIT);
 
-        item.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 1);
+        item.addUnsafeEnchantment(Enchantment.PROTECTION, 1);
 
         meta = item.getItemMeta();
         assert meta != null;
